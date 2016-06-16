@@ -10,13 +10,24 @@ class WeatherController < ApplicationController
     show_weather
   end
 
+  ###<summary>
+  ### Return weather data on Kyiv city
+  ###</summary>
   def show_weather
+    # Setup url
     weather_url = 'http://query.yahooapis.com/v1/public/yql'
-    weather_query = 'select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="Kiev")'
+    # Setup city
+    city = "Kyiv"
+    # Setup query
+    weather_query = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"#{city}\")"
+    # Get query result from yahoo
     weather_result = URI.parse(weather_url + '?q=' + weather_query)
+    # Get XML data
     xml_data = Net::HTTP.get_response(weather_result).body
+
     if response.nil?
       @title = 'Something goes wrong'
+      return
     end
     doc = REXML::Document.new(xml_data)
 
@@ -41,6 +52,7 @@ class WeatherController < ApplicationController
   end
 
   private
+  # Helper Farenheit to Celsius converter
   def farenheit_to_celsius temp
     if temp.is_a? String
       far = temp.to_i
