@@ -1,0 +1,14 @@
+<h1>Hi im test</h1>
+
+
+<div>
+  <p>Select your birth date</p>
+  <%= form_tag do %>
+      <%= date_select :person, :birth_date %><br>
+      <p> <%= submit_tag 'Get my horoscope' %> </p>
+  <% end %>
+</div>
+<div>
+  <%=	 @date %><br>
+  <%=	 @text %>
+</div>

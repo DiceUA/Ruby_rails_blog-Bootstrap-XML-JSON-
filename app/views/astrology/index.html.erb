@@ -1,0 +1,18 @@
+<h1>Hi im Astrology page</h1>
+<%=	 link_to 'Return to main', root_path %>
+
+<div>
+  <p>Select your birth date</p>
+  <%= form_tag do %>
+      <%= date_select :person, :birth_date %><br>
+      <p> <%= submit_tag 'Get my horoscope' %> </p>
+  <% end %>
+</div>
+<div>
+  <% if @text != nil %>
+  <%	 @text.each do |key, value| %>
+      <h3>Your <%=	 key %></h3>
+      <p><%= value.capitalize %></p>
+  <%	 end %>
+  <% end %>
+</div>

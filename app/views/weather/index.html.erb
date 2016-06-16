@@ -1,0 +1,21 @@
+<h1>Weather parser</h1>
+<%=	 link_to 'Return to main', root_path %>
+
+<p class="title"><%=	 @title %></p>
+<p class="today">
+  Today: <%=	 @time %> <br>
+  Current temperature: <%=	 @temperature %> <br>
+  And the weather is: <%=	 @current_weather %>
+</p>
+
+<h3>And forecasts are: </h3>
+<p class="forecast">
+  <%	 @forecast.each do |item| %>
+    <p>
+      Day: <%=	 item.attributes['day'] + " " + item.attributes['date'] %><br>
+      Min t: <%=  farenheit_to_celsius item.attributes['low'] %>
+      Max t: <%=	farenheit_to_celsius item.attributes['high'] %><br>
+      And the weather will be: <%=	 item.attributes['text'] %>
+    </p>
+<%	 end %>
+</p>
