@@ -1,0 +1,13 @@
+<div class="container">
+  <h2><%=	 @post.title %></h2>
+  <%= @post.content %>
+  <hr>
+  <footer>
+    <%=	 link_to 'Go back', posts_path %> <br>
+    <%=	 link_to 'Edit post', edit_post_path %> <br>
+    <%=	 link_to 'Delete post', post_path(@post),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
+  </footer>
+</div>
+

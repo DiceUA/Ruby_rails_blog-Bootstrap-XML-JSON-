@@ -1,0 +1,28 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.box {
+  border: 1px red dotted;
+
+}
+
+.profile aside p {
+    font-size: 12px;
+}
+
+.profile aside ul li {
+  float: left;
+  margin-right: 8px;
+}
+
+.profile aside ul {
+  list-style: none;
+  padding: 0px;
+}
+
+.profile aside ul:after {
+  content: "";
+  display: block;
+  clear: both;
+}

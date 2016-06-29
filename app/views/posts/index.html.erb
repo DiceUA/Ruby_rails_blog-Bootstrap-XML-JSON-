@@ -1,0 +1,56 @@
+<%	 provide :title, 'BlogPosts' %>
+
+<h1><%= yield :title %></h1>
+<%=	 link_to 'Return to main', root_path %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 profile box">
+      <aside>
+        <h4>Username</h4>
+        <p>Full name</p>
+        <hr>
+        <p>Share:</p>
+        <ul class="clearfix">
+          <li>Facebook icon</li>
+          <li>VK icon</li>
+          <li>Email icon</li>
+        </ul>
+      </aside>
+    </div>
+    <div class="col-md-8 box">
+
+      <%	 @posts.each do |p| %>
+      <article>
+        <header>
+          <h2><%=	 p.title %></h2>
+         </header>
+        <footer>
+          <small><%=	 p.created_at %></small>
+        </footer>
+        <div class="lead"><%=	 p.content.split('.')[0] %>... <%=	 link_to 'Read More', post_path(p.id) %></div>
+        <hr>
+      </article>
+      <%	 end %>
+      <nav>
+        <ul class="pagination">
+          <li>
+            <a href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li>
+            <a href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
