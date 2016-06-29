@@ -1,28 +1,19 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Using:
+ - Ruby version 2.3.1
 
-Things you may want to cover:
+ - rspec
 
-* Ruby version
+ - bootstrap
 
-* System dependencies
+ - XML, JSON
 
-* Configuration
+Here you can find:
 
-* Database creation
+ * Simple rails blog with authorization.
 
-* Database initialization
+ * weather forecast for Kiev city
 
-* How to run the test suite
+ * astrology for your sign
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
