@@ -1,3 +1,4 @@
+include SessionsHelper
 class PostsController < ApplicationController
   def index
     @posts = Post.all
@@ -5,6 +6,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments
   end
 
   def new
@@ -17,7 +19,16 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    if @current_user == nil
+      flash[:alert] = "You must be signed in to make new post"
+      render 'new'
+      return
+    else
+      @post.user_id = @current_user.id
+    end
+    @post.visible = true
     if @post.save
+      flash[:notice] = "Post successfully created"
       redirect_to @post
     else
       render 'new'

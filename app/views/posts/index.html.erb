@@ -7,17 +7,24 @@
   <div class="row">
     <div class="col-md-3 profile box">
       <aside>
-        <h4>Username</h4>
-        <p>Full name</p>
-        <hr>
-        <p>Share:</p>
-        <ul class="clearfix">
-          <li>Facebook icon</li>
-          <li>VK icon</li>
-          <li>Email icon</li>
-        </ul>
-        <hr>
-        <%=	 link_to 'New post', new_post_path, class: 'btn btn-primary' %>
+        <%	 if !signed_in? %>
+            <h4>Hello Guest!</h4>
+            You need to be signed in to make new posts. <br>
+            <%= link_to "Log in", signin_path, class: 'btn btn-primary' %>
+        <%	 else %>
+            <h4><%=	 @current_user.username %></h4>
+            <p><%=	 @current_user.fullname %></p>
+            <hr>
+            <p>Share:</p>
+            <ul class="clearfix">
+              <li>Facebook icon</li>
+              <li>VK icon</li>
+              <li>Email icon</li>
+            </ul>
+            <hr>
+            <%=	 link_to 'New post', new_post_path, class: 'btn btn-primary' %>
+        <%	 end %>
+
       </aside>
     </div>
     <div class="col-md-8 box">

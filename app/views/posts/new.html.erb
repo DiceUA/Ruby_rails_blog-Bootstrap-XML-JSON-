@@ -1,0 +1,21 @@
+<% if flash[:alert] %>
+    <div class="alert alert-warning"><%= flash[:alert] %></div>
+<% end %>
+<div class="form-group">
+<%=	 form_for @post, html: {class: "form-horizontal"} do |f| %>
+    <div class="input-group">
+      <h3><%=	 f.label :title, class: 'label label-default' %></h3>
+      <%=	 f.text_field :title, class: 'form-control', placeholder: 'Title' %>
+    </div>
+    <div class="input-group">
+      <h3><%=	 f.label :content, class: 'label label-default' %></h3>
+      <%=	 f.text_area :content, class: 'form-control', placeholder: 'Enter your text here', rows: 10 %>
+    </div>
+
+    <hr>
+    <p>
+      <%=	 f.submit class: 'btn btn-primary' %>
+    </p>
+
+<%	 end %>
+</div>

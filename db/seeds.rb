@@ -98,3 +98,10 @@ Post.create(
     visible: true,
     user_id: 1
 )
+
+Comment.create(
+           message: 'This is the only one comment here',
+           user_id: 2,
+           post_id: 1,
+           visible: true
+)
