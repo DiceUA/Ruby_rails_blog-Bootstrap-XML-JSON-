@@ -7,6 +7,7 @@
     <p>There are no comments yet</p>
   <%	 else %>
     <%	 @comments.each do |c| %>
+      <hr class="divider" width="10%" align="left">
       <comment>
         <p><%=	 c.message %></p>
       </comment>
@@ -18,7 +19,8 @@
       </footer>
     <%	 end %>
   <%	 end %>
-  <%=	 link_to 'New comment', '', class: 'btn btn-primary' %>
+  <br>
+  <%=	 link_to 'New comment', new_comment_path, class: 'btn btn-primary' %>
   <hr>
   <footer>
     <%=	 link_to 'Go back', posts_path %> <br>

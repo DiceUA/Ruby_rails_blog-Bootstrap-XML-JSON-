@@ -1,4 +1,5 @@
 include SessionsHelper
+
 class PostsController < ApplicationController
   def index
     @posts = Post.all
@@ -19,7 +20,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @current_user == nil
+    if !signed_in?
       flash[:alert] = "You must be signed in to make new post"
       render 'new'
       return
@@ -42,10 +43,35 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def new_comment
+    @comment = Comment.new
+  end
+
+  def new_comment_create
+    post = Post.find(params[:id])
+    @comment = Comment.new(comment_params)
+    if !signed_in?
+      @comment.user = User.find_by_username('Anonymous')
+    else
+      @comment.user_id = @current_user.id
+    end
+    @comment.post_id = post.id
+    @comment.visible = true
+    if @comment.save
+      redirect_to post
+    else
+      render 'new'
+    end
+
+  end
 
 
   private
   def post_params
     params.require(:post).permit(:title, :content)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:message)
   end
 end

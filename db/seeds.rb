@@ -10,6 +10,13 @@
 User.delete_all
 
 User.create(
+        fullname: 'Default User',
+        username: 'Anonymous',
+        email: 'Anon@anon.anon',
+        password: 'maximumblankfield'
+)
+
+User.create(
         fullname: 'Nyanta The Cat',
         username: 'nyaka',
         email: 'nyanta@example.com',
@@ -23,6 +30,7 @@ User.create(
         password: 'butler'
 )
 
+Post.delete_all
 
 Post.create(
         title: 'First post',
@@ -98,6 +106,8 @@ Post.create(
     visible: true,
     user_id: 1
 )
+
+Comment.delete_all
 
 Comment.create(
            message: 'This is the only one comment here',

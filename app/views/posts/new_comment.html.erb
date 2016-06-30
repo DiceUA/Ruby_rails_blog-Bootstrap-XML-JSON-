@@ -1,0 +1,17 @@
+<% if flash[:alert] %>
+    <div class="alert alert-warning"><%= flash[:alert] %></div>
+<% end %>
+<div class="form-group">
+  <%=	 form_for @comment, html: {class: "form-horizontal"}, url: new_comment_path, method: 'new_comment' do |f| %>
+      <div class="input-group">
+        <h3><%=	 f.label :message, class: 'label label-default' %></h3>
+        <%=	 f.text_area :message, class: 'form-control', placeholder: 'Enter your text here', rows: 10 %>
+      </div>
+
+      <hr>
+      <p>
+        <%=	 f.submit class: 'btn btn-primary' %>
+      </p>
+
+  <%	 end %>
+</div>
